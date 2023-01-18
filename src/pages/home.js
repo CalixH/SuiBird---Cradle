@@ -19,7 +19,7 @@ const Home = () => {
 
   return (
     <div className="flex w-full h-full items-center justify-center">
-      <NavBar score={score} address={publicAddress} />
+      <NavBar score={score} address={publicAddress} setPublicAddress={setPublicAddress} />
       { death && <MintModal address={publicAddress} setPublicAddress={setPublicAddress} />}
       <GameCanvas setScore={setScore} setDeath={setDeath} />
     </div>
