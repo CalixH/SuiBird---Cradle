@@ -11,9 +11,10 @@ import scoreboardImage from "../assets/images/scoreboard.png"
 import splashImage from "../assets/images/splash.png"
 
 
-const GameCanvas = () => {
+const GameCanvas = ({ setScore, setDeath }) => {
     const canvasRef = useRef(null)
     const [canvas, setCanvas] = useState();
+    const [gameStarted, setGameStarted] = useState(false);
     const [ctx, setCtx] = useState();
     var width, height, birdPos;
     var sky, land, bird, pipe, pipeUp, pipeDown, scoreBoard, ready, splash;
@@ -144,16 +145,17 @@ const GameCanvas = () => {
         // 	drawHidden();
         drawBird();
         drawScore();
+        setScore(score);
     }
 
     const drawScore = () => {
-        ctx.font = '20px "Press Start 2P"';
+        ctx.font = '40px "Righteous"';
         ctx.lineWidth = 5;
         ctx.strokeStyle = '#fff';
         ctx.fillStyle = '#000';
         var txt = "" + score;
-        ctx.strokeText(txt, (width - ctx.measureText(txt).width) / 2, height * 0.15);
-        ctx.fillText(txt, (width - ctx.measureText(txt).width) / 2, height * 0.15);
+        ctx.strokeText(txt, width/12, height * 0.25);
+        ctx.fillText(txt, width/12, height * 0.25);
     }
 
 
@@ -187,8 +189,9 @@ const GameCanvas = () => {
             clearInterval(animation);
             death = 1;
         }
-        if (death)
+        if (death) {
             deathAnimation();
+        }
     }
 
     const jump = () => {
@@ -274,6 +277,7 @@ const GameCanvas = () => {
     }, [canvas])
     useEffect(() => {
         if (ctx) {
+            setDeath(false);
             mode = 0;
             score = 0;
             playdata = [0, 0];
@@ -282,6 +286,9 @@ const GameCanvas = () => {
             mode = 0;
             delta = 100;
             initCanvas();
+            setInterval(() => {
+                if (death == 1 && score >= 1) setDeath(true);
+            }, 100);
         }
     }, [ctx])
     window.onresize = function () {
@@ -289,6 +296,7 @@ const GameCanvas = () => {
         canvas.height = height = window.innerHeight;
         drawCanvas();
     }
+
 
     return (
         <canvas id="canvas" ref={canvasRef} className="flex w-full h-full"></canvas>
