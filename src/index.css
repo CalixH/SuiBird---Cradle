@@ -19,6 +19,10 @@ input.form-control:focus {
   border: none;
 }
 
+* {
+  font-family: "Orange Kid";
+}
+
 @font-face {
   font-family: "Playfair Display";
   src: url(../src/assets/fonts/PlayfairDisplay-ExtraBoldItalic.ttf)
@@ -44,12 +48,18 @@ input.form-control:focus {
   font-display: swap;
 }
 
-
 @font-face {
   font-family: "Righteous";
-  src: url(../src/assets/fonts/Righteous-Regular.ttf)
-    format(truetype);
+  src: url(../src/assets/fonts/Righteous-Regular.ttf) format(truetype);
   font-weight: 800;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Orange Kid";
+  src: url(../src/assets/fonts/Orange-Kid.ttf) format(truetype);
+  font-weight: 800;
+  font-style: italic;
   font-display: swap;
 }
