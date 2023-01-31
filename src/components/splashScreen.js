@@ -21,14 +21,14 @@ const SplashScreen = () => {
         <div
           className=""
           style={{
-            fontSize: "10rem",
+            fontSize: "6rem",
           }}
         >
           SuiBird
         </div>
       </div>
       <div
-        className="flex py-2 px-12 bg-purple-300 mt-[-2rem] pb-4 text-6xl cursor-pointer rounded-xl"
+        className="flex py-2 px-7 bg-purple-300 mt-[0rem] pb-4 text-6xl cursor-pointer rounded-xl"
         onClick={() => {
           connectWallet(setPublicAddress, setShowSelect);
           setSplash(false);

@@ -22,8 +22,8 @@ const NavBar = () => {
           fontSize: "3rem"
         }}>SuiBird</div>
       </div>
-      <div className="flex bg-black bg-opacity-50 rounded-xl py-4 px-6 items-center border border-purple-300 border-2">
-        <div className="flex text-4xl text-yellow-400 w-40 justify-center bg-black rounded-lg py-2 mr-3">{score} pts</div>
+      <div className="flex bg-black bg-opacity-50 rounded-xl py-2 px-6 items-center border border-purple-300 border-2">
+        <div className="flex text-2xl text-yellow-400 w-full justify-center bg-black rounded-lg py-2 mr-3">{score} pts</div>
 
         {publicAddress ? (<>
           <div
@@ -46,18 +46,18 @@ const NavBar = () => {
         </>
         ) : (
           <div
-            className="flex flex-col rounded-xl px-4 text-center w-full mr-3 bg-purple-300 bg-opacity-80 hidden md:flex h-14 md:h-18 items-center justify-center text-sm sm:text-2xl cursor-pointer"
+            className="flex flex-col rounded-xl px-0 text-center w-full mr-3 bg-purple-300 bg-opacity-80 hidden md:flex h-14 md:h-18 items-center justify-center text-sm sm:text-2xl cursor-pointer"
 
             onClick={() => {
               connectWallet(setPublicAddress, setPlaying);
             }}
           >
-            <div className="flex text-4xl  justify-center py-2">
+            <div className="flex text-2xl  justify-center py-2">
               Connect Wallet
             </div>
           </div>
         )}
-        <img src={leaderboard} className="flex h-8 w-auto" onClick={() => setLeaderboardVisible(true)} />
+        <img src={leaderboard} className="flex h-4 w-auto" onClick={() => setLeaderboardVisible(true)} />
       </div>
     </div>
   );
