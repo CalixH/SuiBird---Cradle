@@ -55,19 +55,11 @@ const MintModal = () => {
           <div className="flex flex-col w-full h-1/2 lg:h-full px-10 py-10 bg-black justify-center rounded-3xl">
             <div
               className="flex w-full justify-start text-white text-xl sm:text-4xl"
-              style={{
-                fontFamily: "Satoshi",
-                fontWeight: 700,
-              }}
             >
               Mint Your Score
             </div>
             <div
               className="flex w-full justify-start text-white text-sm sm:text-xl"
-              style={{
-                fontFamily: "Satoshi",
-                fontWeight: 500,
-              }}
             >
               Mint your score as an NFT and have it stored on the Sui Blockchain
               forever!
