@@ -18,17 +18,12 @@ const SplashScreen = () => {
     <div className="flex flex-col items-center absolute select-none h-full justify-center">
       <div className="flex items-center">
         <img src={logo} className="w-32 pt-4 px-3" />
-        <div
-          className=""
-          style={{
-            fontSize: "10rem",
-          }}
-        >
+        <div className="text-8xl md:text-9xl ">
           SuiBird
         </div>
       </div>
       <div
-        className="flex py-2 px-12 bg-purple-300 mt-[-2rem] pb-4 text-6xl cursor-pointer rounded-xl"
+        className="flex py-2 px-12 bg-purple-300 mt-[1rem] pb-4 text-5xl md:text-6xl cursor-pointer rounded-xl"
         onClick={() => {
           connectWallet(setPublicAddress, setShowSelect);
           setSplash(false);
