@@ -1,10 +1,11 @@
 import React from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import GuestIMG from "../assets/images/guest.png";
-import { leaderboardState, playerScoreState, publicAddressState,playingState, selectedNFTState, selectState } from "../store/atoms";
+import { leaderboardState, playerScoreState, publicAddressState,playingState, selectedNFTState, selectState, playerDeathState } from "../store/atoms";
 import logo from "../assets/images/logo.png"
 import leaderboard from "../assets/images/leaderboardCrop.png"
 import connectWallet from "../helpers/connectWallet";
+import replay from "../assets/images/replay.png";
 
 const NavBar = () => {
   const score = useRecoilValue(playerScoreState);
@@ -12,22 +13,22 @@ const NavBar = () => {
   const selectedNFT = useRecoilValue(selectedNFTState); 
   const setLeaderboardVisible = useSetRecoilState(leaderboardState)
   const setPlaying = useSetRecoilState(playingState)
+  const [death, setDeath] = useRecoilState(playerDeathState);
   const setShowSelect = useSetRecoilState(selectState)
 
   return (
-    <div className="flex absolute top-6 w-full h-16 sm:h-28 px-4 py-4 justify-between items-center">
+    
+    <div className="flex absolute top-4 w-full h-16 sm:h-28 px-4 py-4 justify-between items-center">
       <div className="flex items-center">
-        <img src={logo} className="h-12 px-1" />
-        <div className="flex h-full items-center text-center text-black text-2xl sm:text-6xl w-1/3" style={{
-          fontSize: "3rem"
-        }}>SuiBird</div>
+        <img src={logo} className=" h-10 sm:h-12 px-1" />
+        <div className="flex h-full items-center text-center text-black text-3xl sm:text-6xl w-1/3">SuiBird</div>
       </div>
-      <div className="flex bg-black bg-opacity-50 rounded-xl py-4 px-6 items-center border border-purple-300 border-2">
-        <div className="flex text-4xl text-yellow-400 w-40 justify-center bg-black rounded-lg py-2 mr-3">{score} pts</div>
+      <div className="flex bg-black bg-opacity-50 rounded-xl py-1 sm:py-4 px-3 sm:px-6 items-center border border-purple-300 border-2">
+        <div className="flex text-2xl sm:text-4xl text-yellow-400 w-16 sm:w-40 justify-center bg-black rounded-lg py-2 mr-2">{score} pts</div>
 
         {publicAddress ? (<>
           <div
-            className="flex h-full items-center justify-center mx-4 text-white text-4xl"
+            className="flex h-full items-center hidden sm:flex justify-center mx-4 text-white text-4xl"
           >
             {publicAddress.substring(0, 7)}...
           </div>
@@ -57,9 +58,10 @@ const NavBar = () => {
             </div>
           </div>
         )}
-        <img src={leaderboard} className="flex h-8 w-auto" onClick={() => setLeaderboardVisible(true)} />
+        <img src={leaderboard} className="flex h-6 sm:h-8 w-auto" onClick={() => setLeaderboardVisible(true)} />
       </div>
     </div>
+    
   );
 };
 

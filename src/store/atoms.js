@@ -45,6 +45,11 @@ const splashState = atom({
   default: true,
 });
 
+const replay = atom({
+  key: "replay",
+  default: false,
+});
+
 export {
   publicAddressState,
   profilePictureState,
@@ -55,4 +60,5 @@ export {
   selectState,
   selectedNFTState,
   splashState,
+  replay,
 };

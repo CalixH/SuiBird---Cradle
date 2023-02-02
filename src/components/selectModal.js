@@ -51,7 +51,7 @@ const SelectModal = () => {
           })}
         </div>
         <div
-          className="flex rounded-full w-full h-14 md:h-18 bg-gray-900 hover:bg-gray-800 items-center justify-center text-sm sm:text-2xl cursor-pointer"
+          className="flex rounded-3xl w-full h-14 md:h-18 bg-gray-900 hover:bg-gray-800 items-center justify-center text-3xl sm:text-4xl cursor-pointer py-2"
           style={{
             textAlign: "center",
             background:

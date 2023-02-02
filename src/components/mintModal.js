@@ -4,16 +4,20 @@ import {
   publicAddressState,
   playerScoreState,
   playingState,
-  playerDeathState
+  playerDeathState,
+  replay
 } from "../store/atoms";
 import { Dialog } from "@headlessui/react";
 import connectWallet from "../helpers/connectWallet";
 import { submitScore } from "../api";
+
+
 const MintModal = () => {
   const [publicAddress, setPublicAddress] = useRecoilState(publicAddressState);
   const setPlaying = useSetRecoilState(playingState);
   const [death, setDeath] = useRecoilState(playerDeathState);
   const gameScore = useRecoilValue(playerScoreState);
+  const setReplay = useSetRecoilState(replay);
   const months = [
     "Jan",
     "Feb",
@@ -45,35 +49,28 @@ const MintModal = () => {
       open={death}
       onClose={() => {
         setPlaying(true);
-        setDeath(false)
+        setDeath(false);
+        setReplay(true);
       }}
     >
-      <Dialog.Panel className="flex flex-wrap absolute m-auto top-0 bottom-0 left-0 right-0 justify-center items-center absolute max-w-2xl flex-nowrap h-2/3 sm:w-2/3 w-4/5 bg-black bg-opacity-70 rounded-3xl items-center flex-col flex text-white">
+      <Dialog.Panel className="flex flex-wrap absolute m-auto top-0 bottom-0 left-0 right-0 justify-center items-center absolute max-w-2xl flex-nowrap sm:h-1/2 h-3/4 sm:w-1/4 w-3/5 bg-black bg-opacity-70 rounded-3xl items-center flex-col flex text-white">
           <div className="flex w-full h-1/2 lg:h-full">
-            <img src={imageUrlGenerator()} className="flex" />
+            <img src={imageUrlGenerator()} className="flex w-full h-auto rounded-t-3xl" />
           </div>
-          <div className="flex flex-col w-full h-1/2 lg:h-full px-10 py-10 bg-black justify-center rounded-3xl">
+          <div className="flex flex-col w-full h-1/2 lg:h-full px-10 py-10 bg-black justify-center rounded-b-3xl">
             <div
-              className="flex w-full justify-start text-white text-xl sm:text-4xl"
-              style={{
-                fontFamily: "Satoshi",
-                fontWeight: 700,
-              }}
+              className="flex w-full justify-start text-white text-2xl sm:text-4xl"
             >
               Mint Your Score
             </div>
             <div
-              className="flex w-full justify-start text-white text-sm sm:text-xl"
-              style={{
-                fontFamily: "Satoshi",
-                fontWeight: 500,
-              }}
+              className="flex w-full justify-start text-white text-md sm:text-xl"
             >
               Mint your score as an NFT and have it stored on the Sui Blockchain
               forever!
             </div>
             <div
-              className="flex rounded-full w-full h-14 md:h-18 mt-10 bg-gray-900 hover:bg-gray-800 items-center justify-center text-sm sm:text-2xl cursor-pointer"
+              className="flex rounded-full w-full h-14 md:h-18 mt-6 bg-gray-900 hover:bg-gray-800 items-center justify-center text-md sm:text-2xl cursor-pointer"
               style={{
                 textAlign: "center",
                 background: publicAddress
@@ -99,7 +96,7 @@ const MintModal = () => {
               </div>
             </div>
             <div
-              className="flex rounded-full w-full h-14 md:h-18 mt-10 bg-gray-900 hover:bg-gray-800 items-center justify-center text-sm sm:text-2xl cursor-pointer"
+              className="flex rounded-full w-full h-14 md:h-18 mt-6 bg-gray-900 hover:bg-gray-800 items-center justify-center text-md sm:text-2xl cursor-pointer"
               style={{
                 textAlign: "center",
                 background: publicAddress
@@ -108,6 +105,7 @@ const MintModal = () => {
               }}
               onClick={() => {
                 setPlaying(true);
+                setReplay(true);
               }}
             >
               <div className="text-white">Try Again?</div>
@@ -117,5 +115,7 @@ const MintModal = () => {
     </Dialog>
   );
 };
+
+
 
 export default MintModal;
