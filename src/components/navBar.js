@@ -1,10 +1,11 @@
 import React from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import GuestIMG from "../assets/images/guest.png";
-import { leaderboardState, playerScoreState, publicAddressState,playingState, selectedNFTState, selectState } from "../store/atoms";
+import { leaderboardState, playerScoreState, publicAddressState,playingState, selectedNFTState, selectState, playerDeathState } from "../store/atoms";
 import logo from "../assets/images/logo.png"
 import leaderboard from "../assets/images/leaderboardCrop.png"
 import connectWallet from "../helpers/connectWallet";
+import replay from "../assets/images/replay.png";
 
 const NavBar = () => {
   const score = useRecoilValue(playerScoreState);
@@ -12,9 +13,11 @@ const NavBar = () => {
   const selectedNFT = useRecoilValue(selectedNFTState); 
   const setLeaderboardVisible = useSetRecoilState(leaderboardState)
   const setPlaying = useSetRecoilState(playingState)
+  const [death, setDeath] = useRecoilState(playerDeathState);
   const setShowSelect = useSetRecoilState(selectState)
 
   return (
+    
     <div className="flex absolute top-4 w-full h-16 sm:h-28 px-4 py-4 justify-between items-center">
       <div className="flex items-center">
         <img src={logo} className=" h-10 sm:h-12 px-1" />
@@ -58,6 +61,7 @@ const NavBar = () => {
         <img src={leaderboard} className="flex h-6 sm:h-8 w-auto" onClick={() => setLeaderboardVisible(true)} />
       </div>
     </div>
+    
   );
 };
 

@@ -6,6 +6,7 @@ import {  playerDeathState, playerScoreState, playingState, leaderboardState, se
 import SplashScreen from "./splashScreen";
 import Leaderboard from "./leaderboard";
 import SelectModal from "./selectModal";
+import ReplayButton from "../components/replayButton";
 const GameUI = () => {
     const [death, setDeath] = useRecoilState(playerDeathState);
     const [score, setScore] = useRecoilState(playerScoreState);
@@ -21,7 +22,7 @@ const GameUI = () => {
     return (
         <>
             {splash && <SplashScreen />}
-            {playing && <NavBar /> }
+            {playing && <NavBar />}
             {death && !splash && !playing && !select && <MintModal />}
             {select && <SelectModal />}
             {leaderboard && <Leaderboard />}

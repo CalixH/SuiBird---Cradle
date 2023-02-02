@@ -9,6 +9,8 @@ import {
 import { Dialog } from "@headlessui/react";
 import connectWallet from "../helpers/connectWallet";
 import { submitScore } from "../api";
+
+
 const MintModal = () => {
   const [publicAddress, setPublicAddress] = useRecoilState(publicAddressState);
   const setPlaying = useSetRecoilState(playingState);
@@ -45,7 +47,8 @@ const MintModal = () => {
       open={death}
       onClose={() => {
         setPlaying(true);
-        setDeath(false)
+        setDeath(false);
+        
       }}
     >
       <Dialog.Panel className="flex flex-wrap absolute m-auto top-0 bottom-0 left-0 right-0 justify-center items-center absolute max-w-2xl flex-nowrap sm:h-1/2 h-3/4 sm:w-1/4 w-3/5 bg-black bg-opacity-70 rounded-3xl items-center flex-col flex text-white">
@@ -109,5 +112,7 @@ const MintModal = () => {
     </Dialog>
   );
 };
+
+
 
 export default MintModal;
