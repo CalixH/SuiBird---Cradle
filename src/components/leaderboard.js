@@ -28,7 +28,7 @@ const Leaderboard = () => {
                     {topScores.map((item, i) => {
                         return (
                             <div className="flex w-4/5 h-16 justify-between bg-black border border-2 border-purple-300 rounded-xl px-2 items-center my-1">
-                                <div className="flex">{i + 1}. {item.public_address}</div>
+                                <div className="flex">{i + 1}. {item.public_address.substring(0,30)}...</div>
                                 <div className="flex">{item.score} pts</div>
                             </div>
                         )
