@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import NavBar from "../components/navBar";
 import MintModal from "../components/mintModal";
 import { useRecoilState, useRecoilValue } from "recoil";
-import {  playerDeathState, playerScoreState, playingState, leaderboardState, selectState, splashState } from "../store/atoms";
+import {  playerDeathState, playerScoreState, playingState, leaderboardState, selectState, splashState, replay } from "../store/atoms";
 import SplashScreen from "./splashScreen";
 import Leaderboard from "./leaderboard";
 import SelectModal from "./selectModal";
@@ -13,7 +13,8 @@ const GameUI = () => {
     const [playing, setPlaying] = useRecoilState(playingState)
     const leaderboard = useRecoilValue(leaderboardState)
     const select = useRecoilValue(selectState);
-    const splash = useRecoilValue(splashState)
+    const splash = useRecoilValue(splashState);
+    const replayButton = useRecoilValue(replay);
 
 
     useEffect(() => {
@@ -22,6 +23,7 @@ const GameUI = () => {
     return (
         <>
             {splash && <SplashScreen />}
+            {/* {replayButton && <ReplayButton />} */}
             {playing && <NavBar />}
             {death && !splash && !playing && !select && <MintModal />}
             {select && <SelectModal />}

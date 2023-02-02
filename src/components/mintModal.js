@@ -4,7 +4,8 @@ import {
   publicAddressState,
   playerScoreState,
   playingState,
-  playerDeathState
+  playerDeathState,
+  replay
 } from "../store/atoms";
 import { Dialog } from "@headlessui/react";
 import connectWallet from "../helpers/connectWallet";
@@ -16,6 +17,7 @@ const MintModal = () => {
   const setPlaying = useSetRecoilState(playingState);
   const [death, setDeath] = useRecoilState(playerDeathState);
   const gameScore = useRecoilValue(playerScoreState);
+  const setReplay = useSetRecoilState(replay);
   const months = [
     "Jan",
     "Feb",
@@ -48,7 +50,7 @@ const MintModal = () => {
       onClose={() => {
         setPlaying(true);
         setDeath(false);
-        
+        setReplay(true);
       }}
     >
       <Dialog.Panel className="flex flex-wrap absolute m-auto top-0 bottom-0 left-0 right-0 justify-center items-center absolute max-w-2xl flex-nowrap sm:h-1/2 h-3/4 sm:w-1/4 w-3/5 bg-black bg-opacity-70 rounded-3xl items-center flex-col flex text-white">
@@ -103,6 +105,7 @@ const MintModal = () => {
               }}
               onClick={() => {
                 setPlaying(true);
+                setReplay(true);
               }}
             >
               <div className="text-white">Try Again?</div>
