@@ -48,12 +48,12 @@ const MintModal = () => {
     <Dialog
       open={death}
       onClose={() => {
-        setPlaying(true);
-        setDeath(false);
-        setReplay(true);
+        // setPlaying(true);
+        // setDeath(false);
+        // setReplay(true);
       }}
     >
-      <Dialog.Panel className="flex flex-wrap absolute m-auto top-0 bottom-0 left-0 right-0 justify-center items-center absolute max-w-2xl flex-nowrap sm:h-1/2 h-3/4 sm:w-1/4 w-3/5 bg-black bg-opacity-70 rounded-3xl items-center flex-col flex text-white">
+      <Dialog.Panel className="flex flex-wrap absolute m-auto top-0 bottom-0 left-0 right-0 justify-center items-center absolute max-w-2xl flex-nowrap lg:h-1/2 h-3/4 lg:w-1/4 w-3/5 bg-black bg-opacity-70 rounded-3xl items-center flex-col flex text-white">
           <div className="flex w-full h-1/2 lg:h-full">
             <img src={imageUrlGenerator()} className="flex w-full h-auto rounded-t-3xl" />
           </div>
@@ -104,6 +104,7 @@ const MintModal = () => {
                   : "",
               }}
               onClick={() => {
+                setDeath(false);
                 setPlaying(true);
                 setReplay(true);
               }}

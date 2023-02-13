@@ -50,7 +50,13 @@ const NavBar = () => {
             className="flex flex-col rounded-xl px-4 text-center w-full mr-3 bg-purple-300 bg-opacity-80 hidden md:flex h-14 md:h-18 items-center justify-center text-sm sm:text-2xl cursor-pointer"
 
             onClick={() => {
+              function navBarConnectWallet() {
               connectWallet(setPublicAddress, setPlaying);
+              }
+              navBarConnectWallet();
+              setDeath(true);
+              setPlaying(false);
+              setShowSelect(false);
             }}
           >
             <div className="flex text-4xl  justify-center py-2">

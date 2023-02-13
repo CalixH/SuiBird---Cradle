@@ -26,6 +26,7 @@ const SplashScreen = () => {
         className="flex py-2 px-12 bg-purple-300 mt-[1rem] pb-4 text-5xl md:text-6xl cursor-pointer rounded-xl"
         onClick={() => {
           connectWallet(setPublicAddress, setShowSelect);
+          setPlaying(true);
           setSplash(false);
         }}
       >
